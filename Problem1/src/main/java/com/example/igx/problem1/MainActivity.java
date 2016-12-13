@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity /* implements Something1, So
         final TextView text_selectedData = (TextView) findViewById(R.id.text_selectedData);
         final TextView text_selectedType = (TextView) findViewById(R.id.text_selectedType);
         final EditText edit_phoneNumber = (EditText) findViewById(R.id.edit_phoneNumber);
+        
 
         btn_getLocation.setOnClickListener(new View.OnClickListener() {
             @Override

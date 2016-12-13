@@ -3,14 +3,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
 import java.util.ArrayList;
+
+import static java.lang.Integer.parseInt;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     MyBaseAdapter adapter;
     ListView listview;
+    ArrayList<Employee> emp_list = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,23 +33,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EditText edit_age = (EditText) findViewById(R.id.edit_age);
         EditText edit_salary = (EditText) findViewById(R.id.edit_salary);
 
-        Employee employee;
+        Employee employee = new Employee();
 
         switch (v.getId()){
             case R.id.btn_inc:
                 // need something here
+                employee.increase();
+                edit_salary.setText(employee.getSalary());
                 break;
 
             case R.id.btn_dec:
                 // need something here
+                employee.decrease();
+                edit_salary.setText(employee.getSalary());
                 break;
 
             case R.id.btn_store:
                 // need something here
+                employee = new Employee(edit_name.toString(), parseInt(edit_age.toString()), parseInt(edit_salary.toString()));
                 break;
 
             case R.id.btn_modify:
                 // need something here
+                BaseAdapter baseAdapter = new MyBaseAdapter(this, emp_list);
                 break;
 
             case R.id.btn_delete:
