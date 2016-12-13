@@ -1,5 +1,9 @@
 package com.example.igx.problem1;
 
+import android.content.Context;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +25,7 @@ public class MainActivity extends AppCompatActivity /* implements Something1, So
         final TextView text_selectedData = (TextView) findViewById(R.id.text_selectedData);
         final TextView text_selectedType = (TextView) findViewById(R.id.text_selectedType);
         final EditText edit_phoneNumber = (EditText) findViewById(R.id.edit_phoneNumber);
-        
+
 
         btn_getLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +37,11 @@ public class MainActivity extends AppCompatActivity /* implements Something1, So
         btn_getSensors.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SensorManager mSensorManager;
+                Sensor mSensor;
+
+                mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+                mSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
             }
         });
